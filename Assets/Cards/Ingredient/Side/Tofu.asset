@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e294fc7a9724384880b08f03dfa8fbb, type: 3}
+  m_Name: Tofu
+  m_EditorClassIdentifier: Assembly-CSharp::Cards.Card
+  cardName: Tofu
+  cardType: 3
+  cardImg: {fileID: 8233340317658013768, guid: 5df600957512c254485c1c579bcea73d, type: 3}
+  cardBaseImg: {fileID: -1131461781550448514, guid: a28e14a4b64ca034298a3612597267ca, type: 3}
