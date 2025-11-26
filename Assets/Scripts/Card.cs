@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Cards
@@ -12,14 +10,15 @@ namespace Cards
 
         public Sprite cardImg;
         public Sprite cardBaseImg;
-        
+
         public enum CardType
         {
             Flavor,
             Vegetable,
             Meat,
             Side,
-            CookingTechnique,
+            Technique,
+            Equipment,
             Tool
         }
     }

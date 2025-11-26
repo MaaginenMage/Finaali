@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e294fc7a9724384880b08f03dfa8fbb, type: 3}
-  m_Name: Masher
+  m_Name: SteelPan
   m_EditorClassIdentifier: Assembly-CSharp::Cards.Card
-  cardName: Masher
-  cardType: 6
+  cardName: Steel Pan
+  cardType: 5
+  cardImg: {fileID: 3443639967040589854, guid: 532839e71007b8143984cf50c51f3f0f, type: 3}
+  cardBaseImg: {fileID: 8318668334108230224, guid: a28e14a4b64ca034298a3612597267ca, type: 3}

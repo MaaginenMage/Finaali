@@ -1,8 +1,7 @@
+using Cards;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Cards;
-using NUnit.Framework;
 
 public class CardDisplay : MonoBehaviour
 {
