@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4787759449065119302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7011274839211924364}
+  - component: {fileID: 7758903588694631273}
+  m_Layer: 5
+  m_Name: DeckManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7011274839211924364
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787759449065119302}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7758903588694631273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787759449065119302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122913e48ce050e4db36b39632d8fa46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeckManager
+  allCards:
+  - {fileID: 11400000, guid: 97f76571b319a794a84fa62fcf3c44e4, type: 2}
+  - {fileID: 11400000, guid: f87900ed2bc180e4d9b8ec6f8bea4148, type: 2}
+  - {fileID: 11400000, guid: 9cd294bef70e85d449a2b49e5ff170f1, type: 2}
+  - {fileID: 11400000, guid: 6473328d650bc4242851d9fc07ac018f, type: 2}
+  - {fileID: 11400000, guid: a8b370d3a426d8745983779194d4546c, type: 2}
+  - {fileID: 11400000, guid: 669367197aa6a2546b5539519136870f, type: 2}
+  - {fileID: 11400000, guid: adf629183f8a5d9418e44866f7011bdb, type: 2}
+  - {fileID: 11400000, guid: 9f4d56d0ac8dabb419a72e9ba4a566ca, type: 2}
+  - {fileID: 11400000, guid: f25663e0155265141a99501f2e542c5c, type: 2}
+  - {fileID: 11400000, guid: 7aa270af39aa9f34ebc844e566df9a36, type: 2}
+  - {fileID: 11400000, guid: 06bcaac247a9f7d41ba46a1e25cdf7f4, type: 2}
+  - {fileID: 11400000, guid: 2140ba018a4e60f42aa477645af67867, type: 2}
+  - {fileID: 11400000, guid: 1240b37cf1da34341bf2ca80ada4f8ae, type: 2}
+  - {fileID: 11400000, guid: 3f6ef7e918cde3b4fb8f5f5918992f6f, type: 2}
+  - {fileID: 11400000, guid: b749665d737f375469c7b1f4320ab6ad, type: 2}
+  - {fileID: 11400000, guid: 5eea725e6d7a0af48bbbecf33b79568d, type: 2}
+  - {fileID: 11400000, guid: d39e06e22efd88f4db72e205e126b82d, type: 2}
+  - {fileID: 11400000, guid: add0d1aa628552344940e62ec9e8e507, type: 2}
+  - {fileID: 11400000, guid: 03abe757ef245b6409e60bfb5283835e, type: 2}
+  - {fileID: 11400000, guid: bf30d096e50976b45b8236f55f07d63d, type: 2}
+  - {fileID: 11400000, guid: ead3a47a48c0fd84890e04bba205a971, type: 2}
+  - {fileID: 11400000, guid: a0e315ff70d26034f95affe233d75248, type: 2}
+  - {fileID: 11400000, guid: 950b477a330be51408a65d7ad4f00011, type: 2}
+  - {fileID: 11400000, guid: 58840f1a9d76fab4d91958f619155c99, type: 2}
+  - {fileID: 11400000, guid: 0c4bff223c379134392f1a7e4cb197a4, type: 2}
+  - {fileID: 11400000, guid: 236b761e0527d1745a972ca23ae7cdf6, type: 2}
+  - {fileID: 11400000, guid: 6dacba44e37efb24d8c6483a2ac568b8, type: 2}
+  - {fileID: 11400000, guid: 640dddbd7414edd4d8ef05a33b2541ad, type: 2}
+  - {fileID: 11400000, guid: bbbb4d82b53103c4884884ed82b84dd8, type: 2}
+  - {fileID: 11400000, guid: c0002f2e90f69b44b93ea7fec1aba81b, type: 2}
+  - {fileID: 11400000, guid: 59125e5699db03f40a036d57dc70d682, type: 2}
+  - {fileID: 11400000, guid: 8229ffe59cb699242ad878c48543fc26, type: 2}
+  - {fileID: 11400000, guid: bbbb4d82b53103c4884884ed82b84dd8, type: 2}
+  - {fileID: 11400000, guid: c0002f2e90f69b44b93ea7fec1aba81b, type: 2}
+  - {fileID: 11400000, guid: 59125e5699db03f40a036d57dc70d682, type: 2}
+  - {fileID: 11400000, guid: 8229ffe59cb699242ad878c48543fc26, type: 2}
+  startingHand: 6
+  maxHand: 14
+  currentHand: 0
+  draw: {fileID: 8300000, guid: b5b681bcf5a3c544cb1f18acb055634f, type: 3}

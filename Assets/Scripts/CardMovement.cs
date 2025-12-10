@@ -1,11 +1,13 @@
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using Cards;
 
-public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
 {
+    public Card cardData; // From CardDisplay, but we can reference it directly
     private RectTransform rectTransform;
     private Canvas canvas;
     private Vector2 originalLocalPointerPos;
@@ -19,7 +21,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private Vector2 cardPlay;
     [SerializeField] private Vector3 playPosition;
     [SerializeField] private GameObject playArrow;
-    [SerializeField] private float lerpFactor = 0.1f;
 
     void Awake()
     {
@@ -73,7 +74,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             currentState = 1;
         }
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
         if (currentState == 1)
@@ -81,7 +81,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             TransitionToState0();
         }
     }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         if (currentState == 1)
@@ -91,24 +90,45 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             originalPanelLocalPos = rectTransform.localPosition;
         }
     }
-
     public void OnDrag(PointerEventData eventData)
     {
         if (currentState == 2)
         {
-            Vector2 localPointerPos;
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera, out localPointerPos))
-            {
-                rectTransform.position = Vector3.Lerp(rectTransform.position, Input.mousePosition, lerpFactor);
+            rectTransform.position = Input.mousePosition;
 
-                if (rectTransform.localPosition.y > cardPlay.y)
-                {
-                    currentState = 3;
-                    playArrow.SetActive(true);
-                    rectTransform.localPosition = Vector3.Lerp(rectTransform.position, playPosition, lerpFactor);
-                }
+            // Snap visually into play position, but do NOT actually play yet
+            if (rectTransform.localPosition.y > cardPlay.y)
+            {
+                currentState = 3;
+                playArrow.SetActive(true);
+                rectTransform.localPosition = playPosition;
             }
         }
+        else if (currentState == 3)
+        {
+            // If they drag back down, cancel preview
+            if (Input.mousePosition.y < cardPlay.y)
+            {
+                currentState = 2;
+                playArrow.SetActive(false);
+            }
+        }
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        // Released in play area → commit the play
+        if (currentState == 3 && rectTransform.localPosition == playPosition)
+        {
+            var cardData = GetComponent<CardDisplay>().cardData;
+            PrepSlot slot = FindFirstObjectByType<PrepSlot>();
+            if (slot != null)
+                slot.PlaceCard(cardData, this.gameObject);
+
+            return; // card stays in play area
+        }
+
+        // Released NOT in play area → return to hand
+        TransitionToState0();
     }
 
     private void HandleHover()

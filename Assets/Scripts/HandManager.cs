@@ -1,20 +1,21 @@
 using Cards;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class HandManager : MonoBehaviour
 {
+    private DeckManager deckManager;
     public GameObject cardPrefab;
     public Transform handTransform;
+    public List<Card> cardPool;
     public float fanSpread = 3f;
     public float cardSpacing = -120f;
     public float verticalSpacing = 30f;
+    public int maxHand = 14;
+    public AudioSource audioSource;
+    public AudioClip shuffle;
     public List<GameObject> cardsInHand = new List<GameObject>();
-
-    void Start()
-    {
-
-    }
 
     public void AddCardToHand(Card cardData)
     {
@@ -50,6 +51,42 @@ public class HandManager : MonoBehaviour
             float verticalOffset = verticalSpacing * (1 - normalizedPos * normalizedPos);
 
             cardsInHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, 0f);
+        }
+    }
+
+    public void RemoveCard(GameObject card)
+    {
+        if (cardsInHand.Contains(card))
+        {
+            cardsInHand.Remove(card);
+        }
+        UpdateHand();
+    }
+    public void ClearHand()
+    {
+        // Destroy all card GameObjects
+        foreach (var card in cardsInHand)
+        {
+            Destroy(card);
+        }
+
+        // Then clear the list
+        cardsInHand.Clear();
+
+        UpdateHand();
+    }
+
+    public void DrawNewHand()
+    {
+        ClearHand(); // remove all current cards
+
+        audioSource.PlayOneShot(shuffle);
+        if (deckManager == null)
+            deckManager = FindFirstObjectByType<DeckManager>();
+
+        for (int i = 0; i < deckManager.startingHand; i++)
+        {
+            deckManager.DrawCard(this);
         }
     }
 }

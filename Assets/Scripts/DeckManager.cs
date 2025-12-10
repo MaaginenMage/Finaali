@@ -6,7 +6,12 @@ public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
 
-    private int currentIndex = 0;
+    public int startingHand = 6;
+    public int maxHand = 14;
+    public int currentHand;
+
+    private HandManager hand;
+    public AudioClip draw;
 
     private void Start()
     {
@@ -14,21 +19,37 @@ public class DeckManager : MonoBehaviour
 
         allCards.AddRange(cards);
 
-        HandManager hand = FindFirstObjectByType<HandManager>();
-        for (int i = 0; i < 6; i++)
+        hand = FindFirstObjectByType<HandManager>();
+        maxHand = hand.maxHand;
+    }
+
+    private void Update()
+    {
+        if (hand != null)
         {
-            DrawCard(hand);
+            currentHand = hand.cardsInHand.Count;
         }
     }
 
+    public void DrawCardFromButton()
+    {
+
+        Debug.Log("Button pressed!");
+        if (hand == null)
+            hand = FindFirstObjectByType<HandManager>();
+
+        DrawCard(hand);
+    }
+
+
     public void DrawCard(HandManager handManager)
     {
-        if (allCards.Count == 0)
+        handManager.audioSource.PlayOneShot(draw);
+        if (allCards.Count == 0 || handManager.cardsInHand.Count >= maxHand)
         {
             return;
         }
-        Card nextCard = allCards[currentIndex];
+        Card nextCard = allCards[Random.Range(0, allCards.Count)];
         handManager.AddCardToHand(nextCard);
-        currentIndex = (currentIndex + 1) % allCards.Count;
     }
 }
